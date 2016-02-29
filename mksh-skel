@@ -37,12 +37,14 @@ while getopts ":hn:" opt; do
   case \$opt in
     h)  help;;
     n)  NAME="\$OPTARG";;
-    \?) echo "Invalid option: -\$OPTARG" >&2 ;help; exit 1 ;;
-    :)  echo "Option -\$OPTARG requires an argument." >&2; help; exit 1;;
+    \?) echo "Invalid option: -\$OPTARG" >&2; help;;
+    :)  echo "Option -\$OPTARG requires an argument." >&2; help;;
   esac
 done
 
 shift \$(( \$OPTIND-1 ))
+
+exit 0
 EOF
 sed -i "s/%EOF/EOF/" $NEW_SCRIPT_PATH
 chmod 755 $NEW_SCRIPT_PATH
@@ -51,8 +53,8 @@ chmod 755 $NEW_SCRIPT_PATH
 while getopts ":hn:" opt; do
   case $opt in
     h)  help;;
-    \?) echo "Invalid option: -$OPTARG" >&2; help; exit 1;;
-    :)  echo "Option -$OPTARG requires an argument." >&2 ;help; exit 1;;
+    \?) echo "Invalid option: -$OPTARG" >&2; help;;
+    :)  echo "Option -$OPTARG requires an argument." >&2; help;;
   esac
 done
 
@@ -67,3 +69,5 @@ then
 fi
 
 init_skel
+
+exit 0
